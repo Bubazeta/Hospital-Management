@@ -10,7 +10,7 @@ Client.Ui.addElement = (element, dest) => {
   document.querySelector(dest).innerHTML += element;
 }
 
-Client.Ui.generateModal = (content, title, ref="main") => {
+Client.Ui.generateModal = (contentt, title, ref="main") => {
   const uuid = "a" + uuidv4();
   let codeModal = `<div class="modal ${uuid}">`;
   codeModal += '<div class="modal__head">';
@@ -18,7 +18,7 @@ Client.Ui.generateModal = (content, title, ref="main") => {
   codeModal += `<button class="modal__close" onclick="Hospital.Client.Ui.closeModal('${uuid}')" >X</button>`;
   codeModal += '</div>';
   codeModal += '<div class="modal__body">';
-  codeModal += content;
+  codeModal += contentt;
   codeModal += '</div>'
   codeModal += "</div>";
   Client.Ui.addElement(codeModal, "main");
@@ -41,6 +41,6 @@ Client.Ui.closeModal = (classNameUUID) => {
   modal.classList.remove('modal--active');
 }
 
-Client.Ui.updateModal = (conten,classNameUUID) => {
-  document.querySelector(`.${classNameUUID} .modal__body`).innerHTML = conten;
+Client.Ui.updateModal = (content,classNameUUID) => {
+  document.querySelector(`.${classNameUUID} .modal__body`).innerHTML = content;
 }
