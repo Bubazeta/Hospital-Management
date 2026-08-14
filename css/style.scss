@@ -10,7 +10,6 @@
   display: flex;
 }
 
-
 .modal {
   position: fixed;
   top: 50%;
@@ -25,13 +24,13 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  
-  &--active{
+
+  &--active {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, -50%) translateY(0);
   }
-  
+
   &__head {
     display: flex;
     padding: 1rem;
@@ -39,11 +38,11 @@
     align-items: center;
     background-color: #f1f1f1;
   }
-  
-  &__body{
+
+  &__body {
     padding: 1rem;
   }
-  
+
   &__close {
     cursor: pointer;
     font-size: 1.25rem;
@@ -52,9 +51,75 @@
     background-color: #ff0101;
     border-radius: 0.5rem;
     padding: 0.5rem;
+
     &:hover {
       color: #000000;
     }
   }
-  
+}
+
+.container {
+  padding: 0.5rem;
+  background-color: grey;
+  display: flex;
+
+  &--sm {
+    width: 250px;
+    height: 250px;
+    background-color: red;
+    overflow: hidden;
+  }
+
+  &--md {
+    width: 450px;
+    height: 450px;
+    background-color: yellow;
+  }
+
+  &--lg {
+    width: 550px;
+    height: 550px;
+    background-color: black;
+  }
+
+  & img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  &--sm>img,
+  &--md>img,
+  &--lg>img {
+    width: 100%;
+  }
+}
+
+.direction {
+
+  &--left {
+    flex-direction: row;
+  }
+
+  &--bottom {
+    flex-direction: column;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+
+$num-cols: 24;
+
+@mixin flex-size($numerator, $denominator: 12) {
+  $size: percentage($numerator / $denominator);
+  flex: 0 0 $size;
+  max-width: $size;
+}
+
+@for $i from 1 through $num-cols {
+  .col-#{$i}-#{$num-cols} {
+    @include flex-size($i, $num-cols);
+  }
 }
